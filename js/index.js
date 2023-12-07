@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", function() {
       data.forEach(item => {
         cardSection.innerHTML += createCardHtml(item);
       });
+      AOS.init();
     });
   };
 
   // Call function to populate card section
   populateCardSection();
-  AOS.init();
 
 });
