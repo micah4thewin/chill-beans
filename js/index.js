@@ -19,8 +19,8 @@ const fetchJsonData = async (filename) => {
 const createCardHtml = (item) => `
   <div class="col-12 col-md-6 col-lg-4 mb-4">
     <div class="card rounded">
-      <img src="${item.photo}" class="card-img-top" alt="${item.name}">
-      <div class="card-body">
+      <img src="${item.photo}" class="card-img-top" alt="${item.name}" data-aos="zoom-in">
+      <div class="card-body" data-aos="fade-up">
         <h5 class="card-title fs-3">${item.name}</h5>
         <p class="card-text">${item.description}</p>
         <div class="d-flex justify-content-between align-items-center">
@@ -52,4 +52,4 @@ const populateCardSection = async () => {
 // Call function to populate card section
 populateCardSection();
 AOS.init();
-);
+)};
