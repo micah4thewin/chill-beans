@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Blue Raspberry Slushy",
+    "description": "Refreshing blue raspberry flavored slushy",
+    "photo": "assets/images/blueras.webp",
+    "sizes": [
+      {
+        "size": "12oz",
+        "price": 3.00,
+        "calories": 180
+      },
+      {
+        "size": "16oz",
+        "price": 4.00,
+        "calories": 240
+      },
+      {
+        "size": "24oz",
+        "price": 5.00,
+        "calories": 360
+      }
+    ]
+  },
+  {
+    "name": "Mountain Dew",
+    "description": "Classic Mountain Dew soda",
+    "photo": "assets/images/mountaindew.webp",
+    "sizes": [
+      {
+        "size": "12oz",
+        "price": 2.00,
+        "calories": 170
+      },
+      {
+        "size": "16oz",
+        "price": 2.50,
+        "calories": 230
+      },
+      {
+        "size": "24oz",
+        "price": 3.00,
+        "calories": 340
+      }
+    ]
+  },
+  {
+    "name": "Strawberry Slushy",
+    "description": "Sweet and tangy strawberry slushy",
+    "photo": "assets/images/strawberry.webp",
+    "sizes": [
+      {
+        "size": "12oz",
+        "price": 3.00,
+        "calories": 180
+      },
+      {
+        "size": "16oz",
+        "price": 4.00,
+        "calories": 240
+      },
+      {
+        "size": "24oz",
+        "price": 5.00,
+        "calories": 360
+      }
+    ]
+  }
+]

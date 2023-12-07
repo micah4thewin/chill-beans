@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Bagel",
+    "description": "Freshly baked bagel",
+    "photo": "assets/images/bagel.webp",
+    "sizes": [
+      {
+        "size": "Single",
+        "price": 2.50,
+        "calories": 245
+      }
+    ]
+  },
+  {
+    "name": "Burrito",
+    "description": "Delicious burrito with fresh ingredients",
+    "photo": "assets/images/burrito.webp",
+    "sizes": [
+      {
+        "size": "Single",
+        "price": 6.00,
+        "calories": 500
+      }
+    ]
+  },
+  {
+    "name": "Crepe",
+    "description": "Delicate and delicious crepe",
+    "photo": "assets/images/crepe.webp",
+    "sizes": [
+      {
+        "size": "Single",
+        "price": 5.00,
+        "calories": 130
+      }
+    ]
+  }
+]

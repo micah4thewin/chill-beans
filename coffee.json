@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Coffee",
+    "description": "Rich and aromatic coffee",
+    "photo": "assets/images/coffee.webp",
+    "sizes": [
+      {
+        "size": "12oz",
+        "price": 2.50,
+        "calories": 5
+      },
+      {
+        "size": "16oz",
+        "price": 3.00,
+        "calories": 10
+      },
+      {
+        "size": "24oz",
+        "price": 4.00,
+        "calories": 15
+      }
+    ]
+  },
+  {
+    "name": "Crepe",
+    "description": "Delicate and delicious crepe",
+    "photo": "assets/images/crepe.webp",
+    "sizes": [
+      {
+        "size": "Single",
+        "price": 5.00,
+        "calories": 130
+      }
+    ]
+  },
+  {
+    "name": "Frappe",
+    "description": "Chilled and frothy frappe",
+    "photo": "assets/images/frap.webp",
+    "sizes": [
+      {
+        "size": "12oz",
+        "price": 4.00,
+        "calories": 240
+      },
+      {
+        "size": "16oz",
+        "price": 5.00,
+        "calories": 320
+      },
+      {
+        "size": "24oz",
+        "price": 6.00,
+        "calories": 480
+      }
+    ]
+  },
+  {
+    "name": "Iced Coffee",
+    "description": "Cool and refreshing iced coffee",
+    "photo": "assets/images/iced.webp",
+    "sizes": [
+      {
+        "size": "12oz",
+        "price": 2.50,
+        "calories": 5
+      },
+      {
+        "size": "16oz",
+        "price": 3.00,
+        "calories": 10
+      },
+      {
+        "size": "24oz",
+        "price": 4.00,
+        "calories": 15
+      }
+    ]
+  }
+]
