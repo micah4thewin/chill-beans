@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
       AOS.init();
-    });
+
   };
 
   // Call function to populate card section
