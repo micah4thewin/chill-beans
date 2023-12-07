@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   // Function to create card HTML
-  const createCardHtml = (item) => `
+  const createCardHtml = (item, index) => `
     <div class="col-12 col-md-6 col-lg-4 mb-4">
       <div class="card rounded">
         <img src="${item.photo}" class="card-img-top" alt="${item.name}" data-aos="zoom-in">
@@ -26,14 +26,15 @@ document.addEventListener("DOMContentLoaded", function() {
           <p class="card-text">${item.description}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group" role="group">
-              ${item.sizes.map(size => `<button type="button" class="btn btn-secondary">${size.size}</button>`).join('')}
+              ${item.sizes.map((size, sizeIndex) => `<button id="size-btn-${index}-${sizeIndex}" type="button" class="btn btn-secondary">${size.size}</button>`).join('')}
             </div>
-            <p class="card-text"><small class="text-muted fs-3">$${item.sizes[0].price}</small></p>
+            <p id="price-${index}" class="card-text"><small class="text-muted fs-3">$${item.sizes[0].price}</small></p>
           </div>
         </div>
       </div>
     </div>
   `;
+
 
   // Populate card section
   const populateCardSection = async () => {
@@ -47,6 +48,19 @@ document.addEventListener("DOMContentLoaded", function() {
       data.forEach(item => {
         cardSection.innerHTML += createCardHtml(item);
       });
+
+
+      data.forEach((item, index) => {
+  cardSection.innerHTML += createCardHtml(item, index);
+  item.sizes.forEach((size, sizeIndex) => {
+    document.getElementById(`size-btn-${index}-${sizeIndex}`).addEventListener('click', () => {
+      document.getElementById(`price-${index}`).innerHTML = `<small class="text-muted fs-3">$${size.price}</small>`;
+    });
+  });
+});
+
+
+
       AOS.init();
     });
   };
