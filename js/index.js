@@ -38,31 +38,43 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Populate card section
   const populateCardSection = async () => {
-    const foodData = await fetchJsonData('food.json');
-    const slushyData = await fetchJsonData('slushy.json');
-    const coffeeData = await fetchJsonData('coffee.json');
-    const cardSection = document.querySelector('#menu-section');
+      const foodData = await fetchJsonData('food.json');
+      const slushyData = await fetchJsonData('slushy.json');
+      const coffeeData = await fetchJsonData('coffee.json');
+      const cardSection = document.querySelector('#menu-section');
 
-    [foodData, slushyData, coffeeData].forEach(data => {
-      data.forEach((item, index) => {
-        cardSection.innerHTML += createCardHtml(item, index);
-      });
-    });
+      let foodIndex = 0;
+      let slushyIndex = 0;
+      let coffeeIndex = 0;
 
-    [foodData, slushyData, coffeeData].forEach(data => {
-      data.forEach((item, index) => {
-        item.sizes.forEach((size, sizeIndex) => {
-          document.getElementById(`size-btn-${index}-${sizeIndex}`).addEventListener('click', () => {
-            console.log("This was clicked");
-            document.getElementById(`price-${index}`).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
+      [foodData, slushyData, coffeeData].forEach(data => {
+          data.forEach((item) => {
+              let currentIndex;
+              if (data === foodData) {
+                  cardSection.innerHTML += createCardHtml(item, foodIndex);
+                  currentIndex = foodIndex;
+                  foodIndex++;
+              } else if (data === slushyData) {
+                  cardSection.innerHTML += createCardHtml(item, slushyIndex);
+                  currentIndex = slushyIndex;
+                  slushyIndex++;
+              } else {
+                  cardSection.innerHTML += createCardHtml(item, coffeeIndex);
+                  currentIndex = coffeeIndex;
+                  coffeeIndex++;
+              }
 
+              item.sizes.forEach((size, sizeIndex) => {
+                  document.getElementById(`size-btn-${currentIndex}-${sizeIndex}`).addEventListener('click', () => {
+                      document.getElementById(`price-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
+                  });
+              });
           });
-        });
       });
-    });
 
-    AOS.init();
+      AOS.init();
   };
+
 
   // Call function to populate card section
   populateCardSection();
