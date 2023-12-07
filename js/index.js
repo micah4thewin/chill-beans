@@ -53,7 +53,9 @@ document.addEventListener("DOMContentLoaded", function() {
       data.forEach((item, index) => {
         item.sizes.forEach((size, sizeIndex) => {
           document.getElementById(`size-btn-${index}-${sizeIndex}`).addEventListener('click', () => {
+            console.log("This was clicked");
             document.getElementById(`price-${index}`).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
+
           });
         });
       });
