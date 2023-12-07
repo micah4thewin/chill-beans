@@ -65,5 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Call function to populate card section
   populateCardSection();
 
+console.log('1');
 
 });
