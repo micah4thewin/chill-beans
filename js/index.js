@@ -7,7 +7,7 @@ var typed = new Typed('#element', {
   smartBackspace: true
 });
 */
-
+document.addEventListener("DOMContentLoaded", function() {
 // Fetch data from JSON files
 const fetchJsonData = async (filename) => {
   const response = await fetch(filename);
@@ -51,3 +51,5 @@ const populateCardSection = async () => {
 
 // Call function to populate card section
 populateCardSection();
+AOS.init();
+);
