@@ -11,6 +11,16 @@ body {
                -7px -7px 14px #2e1f2b;
 }
 
+
+.card:hover {
+  border: solid;
+  border-width: 3px;
+  border-color: #281b25;
+  background: #efefef;
+  box-shadow:  7px 7px 14px #22171f,
+               -7px -7px 14px #2e1f2b;
+}
+
 .cyan-text {
     color: #5fa09a;
 }
