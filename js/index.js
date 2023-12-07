@@ -43,24 +43,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const coffeeData = await fetchJsonData('coffee.json');
     const cardSection = document.querySelector('#menu-section'); // Changed to your actual card section selector
 
-    // Append cards to card section
     [foodData, slushyData, coffeeData].forEach(data => {
-      data.forEach(item => {
-        cardSection.innerHTML += createCardHtml(item);
-      });
-
-
       data.forEach((item, index) => {
-  cardSection.innerHTML += createCardHtml(item, index);
-  item.sizes.forEach((size, sizeIndex) => {
-    document.getElementById(`size-btn-${index}-${sizeIndex}`).addEventListener('click', () => {
-      document.getElementById(`price-${index}`).innerHTML = `<small class="text-muted fs-3">$${size.price}</small>`;
+        cardSection.innerHTML += createCardHtml(item, index);
+        item.sizes.forEach((size, sizeIndex) => {
+          document.getElementById(`size-btn-${index}-${sizeIndex}`).addEventListener('click', () => {
+            document.getElementById(`price-${index}`).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
+          });
+        });
+      });
     });
-  });
-});
-
-
-
       AOS.init();
     });
   };

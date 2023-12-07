@@ -22,18 +22,6 @@
     ]
   },
   {
-    "name": "Crepe",
-    "description": "Delicate and delicious crepe",
-    "photo": "assets/images/crepe.webp",
-    "sizes": [
-      {
-        "size": "Single",
-        "price": 5.00,
-        "calories": 130
-      }
-    ]
-  },
-  {
     "name": "Frappe",
     "description": "Chilled and frothy frappe",
     "photo": "assets/images/frap.webp",
