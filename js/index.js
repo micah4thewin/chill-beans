@@ -7,8 +7,7 @@ var typed = new Typed('#element', {
   smartBackspace: true
 });
 */
-document.addEventListener("DOMContentLoaded", function() {
-
+document.addEventListener("DOMContentLoaded", function () {
   // Fetch data from JSON files
   const fetchJsonData = async (filename) => {
     const response = await fetch(filename);
@@ -26,59 +25,52 @@ document.addEventListener("DOMContentLoaded", function() {
           <p class="card-text">${item.description}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group" role="group">
-              ${item.sizes.map((size, sizeIndex) => `<button id="size-btn-${index}-${sizeIndex}" type="button" class="btn btn-secondary">${size.size}</button>`).join('')}
+              ${item.sizes
+                .map(
+                  (size, sizeIndex) =>
+                    `<button id="size-btn-${index}-${sizeIndex}" type="button" class="btn btn-secondary">${size.size}</button>`
+                )
+                .join("")}
             </div>
-            <p id="price-${index}" class="card-text"><small class="text-muted fs-3">$${item.sizes[0].price}</small></p>
+            <p id="price-${index}" class="card-text"><small class="text-muted fs-3">${
+    item.sizes[0].price
+  }</small></p>
           </div>
         </div>
       </div>
     </div>
   `;
 
-
   // Populate card section
   const populateCardSection = async () => {
-      const foodData = await fetchJsonData('food.json');
-      const slushyData = await fetchJsonData('slushy.json');
-      const coffeeData = await fetchJsonData('coffee.json');
-      const cardSection = document.querySelector('#menu-section');
+    const foodData = await fetchJsonData("food.json");
+    const slushyData = await fetchJsonData("slushy.json");
+    const coffeeData = await fetchJsonData("coffee.json");
+    const cardSection = document.querySelector("#menu-section");
 
-      let foodIndex = 0;
-      let slushyIndex = 0;
-      let coffeeIndex = 0;
+    let index = 0;
 
-      [foodData, slushyData, coffeeData].forEach(data => {
-          data.forEach((item) => {
-              let currentIndex;
-              if (data === foodData) {
-                  cardSection.innerHTML += createCardHtml(item, foodIndex);
-                  currentIndex = foodIndex;
-                  foodIndex++;
-              } else if (data === slushyData) {
-                  cardSection.innerHTML += createCardHtml(item, slushyIndex);
-                  currentIndex = slushyIndex;
-                  slushyIndex++;
-              } else {
-                  cardSection.innerHTML += createCardHtml(item, coffeeIndex);
-                  currentIndex = coffeeIndex;
-                  coffeeIndex++;
-              }
+    [foodData, slushyData, coffeeData].forEach((data) => {
+      data.forEach((item) => {
+        cardSection.innerHTML += createCardHtml(item, index);
 
-              item.sizes.forEach((size, sizeIndex) => {
-                  document.getElementById(`size-btn-${currentIndex}-${sizeIndex}`).addEventListener('click', () => {
-                      document.getElementById(`price-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
-                  });
-              });
-          });
+        item.sizes.forEach((size, sizeIndex) => {
+          document
+            .getElementById(`size-btn-${index}-${sizeIndex}`)
+            .addEventListener("click", () => {
+              document.getElementById(
+                `price-${index}`
+              ).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
+            });
+        });
+
+        index++;
       });
+    });
 
-      AOS.init();
+    AOS.init();
   };
-
 
   // Call function to populate card section
   populateCardSection();
-
-console.log('1');
-
 });
