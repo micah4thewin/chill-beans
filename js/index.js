@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <p class="card-text">${item.description}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group" role="group">
-              ${item.sizes.map((size, sizeIndex) => `<button id="size-btn-${index}-${sizeIndex}" type="button" class="btn btn-secondary">${size.size}</button>`).join('')}
+              ${item.sizes.map((size, sizeIndex) => `<button id="size-btn-${index}-${sizeIndex}" type="button" class="btn btn-secondary" data-item='${JSON.stringify(item)}'>${size.size}</button>`).join('')}
             </div>
             <p id="price-${index}" class="card-text"><small class="text-muted fs-3">$${item.sizes[0].price}</small></p>
           </div>
@@ -35,13 +35,13 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   `;
 
-
   // Populate card section
   const populateCardSection = async () => {
     const foodData = await fetchJsonData('food.json');
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
     const cardSection = document.querySelector('#menu-section');
+
     let foodIndex = 0;
     let slushyIndex = 0;
     let coffeeIndex = 0;
@@ -68,17 +68,17 @@ document.addEventListener("DOMContentLoaded", function() {
     cardSection.addEventListener('click', (event) => {
       if (event.target.tagName === 'BUTTON') {
         const [btnType, currentIndex, sizeIndex] = event.target.id.split('-');
-        const currentData = [foodData, slushyData, coffeeData].flat()[currentIndex];
-        document.getElementById(`price-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">$${currentData.sizes[sizeIndex].price}</small>`;
+        const item = JSON.parse(event.target.getAttribute('data-item'));
+        document.getElementById(`price-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">$${item.sizes[sizeIndex].price}</small>`;
       }
     });
+
     AOS.init();
   };
-
 
   // Call function to populate card section
   populateCardSection();
 
-console.log('1');
+  console.log('1');
 
 });
