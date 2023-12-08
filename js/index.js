@@ -41,29 +41,32 @@ document.addEventListener("DOMContentLoaded", function() {
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
     const cardSection = document.querySelector('#menu-section');
-
     let foodIndex = 0;
     let slushyIndex = 0;
     let coffeeIndex = 0;
 
-    [foodData, slushyData, coffeeData].forEach(data => {
+    let htmlContent = '';
+
+    [foodData, slushyData, coffeeData].forEach((data) => {
       data.forEach((item) => {
         let currentIndex;
         if (data === foodData) {
-          cardSection.innerHTML += createCardHtml(item, foodIndex);
+          htmlContent += createCardHtml(item, foodIndex);
           currentIndex = foodIndex;
           foodIndex++;
         } else if (data === slushyData) {
-          cardSection.innerHTML += createCardHtml(item, slushyIndex);
+          htmlContent += createCardHtml(item, slushyIndex);
           currentIndex = slushyIndex;
           slushyIndex++;
         } else {
-          cardSection.innerHTML += createCardHtml(item, coffeeIndex);
+          htmlContent += createCardHtml(item, coffeeIndex);
           currentIndex = coffeeIndex;
           coffeeIndex++;
         }
       });
     });
+
+    cardSection.innerHTML = htmlContent;
 
     cardSection.addEventListener('click', (event) => {
       if (event.target.tagName === 'BUTTON') {
@@ -79,6 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Call function to populate card section
   populateCardSection();
 
-  console.log('1');
+  console.log('2');
 
 });
