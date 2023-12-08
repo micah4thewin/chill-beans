@@ -7,7 +7,8 @@ var typed = new Typed('#element', {
   smartBackspace: true
 });
 */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+
   // Fetch data from JSON files
   const fetchJsonData = async (filename) => {
     const response = await fetch(filename);
@@ -25,62 +26,59 @@ document.addEventListener("DOMContentLoaded", function () {
           <p class="card-text">${item.description}</p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group" role="group">
-              ${item.sizes
-                .map(
-                  (size, sizeIndex) =>
-                    `<button id="size-btn-${index}-${sizeIndex}" type="button" class="btn btn-secondary">${size.size}</button>`
-                )
-                .join("")}
+              ${item.sizes.map((size, sizeIndex) => `<button id="size-btn-${index}-${sizeIndex}" type="button" class="btn btn-secondary">${size.size}</button>`).join('')}
             </div>
-            <p id="price-${index}" class="card-text"><small class="text-muted fs-3">${
-    item.sizes[0].price
-  }</small></p>
+            <p id="price-${index}" class="card-text"><small class="text-muted fs-3">$${item.sizes[0].price}</small></p>
           </div>
         </div>
       </div>
     </div>
   `;
 
+
   // Populate card section
   const populateCardSection = async () => {
-    const foodData = await fetchJsonData("food.json");
-    const slushyData = await fetchJsonData("slushy.json");
-    const coffeeData = await fetchJsonData("coffee.json");
-    const cardSection = document.querySelector("#menu-section");
+    const foodData = await fetchJsonData('food.json');
+    const slushyData = await fetchJsonData('slushy.json');
+    const coffeeData = await fetchJsonData('coffee.json');
+    const cardSection = document.querySelector('#menu-section');
+    let foodIndex = 0;
+    let slushyIndex = 0;
+    let coffeeIndex = 0;
 
-    let index = 0;
-
-    [foodData, slushyData, coffeeData].forEach((data) => {
-        let cardsHtml = '';
-        data.forEach((item) => {
-            // Create all HTML first, store it in cardsHtml
-            cardsHtml += createCardHtml(item, index);
-
-            index++;
-        });
-        // append cardsHtml to cardSection
-        cardSection.insertAdjacentHTML('beforeend', cardsHtml);
-
-        index = 0;
-
-        // Now comes attaching event listeners part
-        [foodData, slushyData, coffeeData].forEach((data, dataIndex) => {
-            data.forEach((item) => {
-                item.sizes.forEach((size, sizeIndex) => {
-                    document
-                        .getElementById(`size-btn-${index}-${sizeIndex}`)
-                        .addEventListener('click', () => {
-                            document.getElementById(`price-${index}`).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
-                        });
-                });
-                index++;
-            });
-        });
+    [foodData, slushyData, coffeeData].forEach(data => {
+      data.forEach((item) => {
+        let currentIndex;
+        if (data === foodData) {
+          cardSection.innerHTML += createCardHtml(item, foodIndex);
+          currentIndex = foodIndex;
+          foodIndex++;
+        } else if (data === slushyData) {
+          cardSection.innerHTML += createCardHtml(item, slushyIndex);
+          currentIndex = slushyIndex;
+          slushyIndex++;
+        } else {
+          cardSection.innerHTML += createCardHtml(item, coffeeIndex);
+          currentIndex = coffeeIndex;
+          coffeeIndex++;
+        }
+      });
     });
 
+    cardSection.addEventListener('click', (event) => {
+      if (event.target.tagName === 'BUTTON') {
+        const [btnType, currentIndex, sizeIndex] = event.target.id.split('-');
+        const currentData = [foodData, slushyData, coffeeData].flat()[currentIndex];
+        document.getElementById(`price-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">$${currentData.sizes[sizeIndex].price}</small>`;
+      }
+    });
     AOS.init();
   };
-  console.log('2');
+
+
   // Call function to populate card section
   populateCardSection();
+
+console.log('1');
+
 });
