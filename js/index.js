@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="col-12 col-md-6 col-lg-4 mb-4">
       <div class="card rounded">
         <img src="${item.photo}" class="card-img-top" alt="${item.name}" data-aos="zoom-in">
-        <div class="card-body" data-aos="fade-up">
+        <div class="card-body" >
           <h5 class="card-title fs-3">${item.name}</h5>
           <p class="card-text">${item.description}</p>
           <div class="d-flex justify-content-between align-items-center">
@@ -82,6 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Call function to populate card section
   populateCardSection();
 
-  console.log('2');
+  console.log('3');
 
 });
