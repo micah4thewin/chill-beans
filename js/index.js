@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     AOS.init();
   };
-
+  console.log('2');
   // Call function to populate card section
   populateCardSection();
 });
