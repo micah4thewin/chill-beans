@@ -51,21 +51,31 @@ document.addEventListener("DOMContentLoaded", function () {
     let index = 0;
 
     [foodData, slushyData, coffeeData].forEach((data) => {
-      data.forEach((item) => {
-        cardSection.innerHTML += createCardHtml(item, index);
+        let cardsHtml = '';
+        data.forEach((item) => {
+            // Create all HTML first, store it in cardsHtml
+            cardsHtml += createCardHtml(item, index);
 
-        item.sizes.forEach((size, sizeIndex) => {
-          document
-            .getElementById(`size-btn-${index}-${sizeIndex}`)
-            .addEventListener("click", () => {
-              document.getElementById(
-                `price-${index}`
-              ).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
+            index++;
+        });
+        // append cardsHtml to cardSection
+        cardSection.insertAdjacentHTML('beforeend', cardsHtml);
+
+        index = 0;
+
+        // Now comes attaching event listeners part
+        [foodData, slushyData, coffeeData].forEach((data, dataIndex) => {
+            data.forEach((item) => {
+                item.sizes.forEach((size, sizeIndex) => {
+                    document
+                        .getElementById(`size-btn-${index}-${sizeIndex}`)
+                        .addEventListener('click', () => {
+                            document.getElementById(`price-${index}`).innerHTML = `<small class="text-muted fs-3">${size.price}</small>`;
+                        });
+                });
+                index++;
             });
         });
-
-        index++;
-      });
     });
 
     AOS.init();
