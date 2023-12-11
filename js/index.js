@@ -7,7 +7,7 @@ var typed = new Typed('#element', {
   smartBackspace: true
 });
 */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
   // Fetch data from JSON files
   const fetchJsonData = async (filename) => {
@@ -86,13 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     cardSection.innerHTML = htmlContent;
-
-    AOS.init();
   };
 
   // Call function to populate card section
-  populateCardSection();
-
+  await populateCardSection();
+  AOS.init();
   console.log('5');
 
-});
+})();
