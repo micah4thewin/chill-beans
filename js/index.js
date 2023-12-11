@@ -7,7 +7,7 @@ var typed = new Typed('#element', {
   smartBackspace: true
 });
 */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
   // Fetch data from JSON files
   const fetchJsonData = async (filename) => {
@@ -54,44 +54,44 @@ document.addEventListener("DOMContentLoaded", function() {
     let htmlContent = '';
 
     [foodData, slushyData, coffeeData].forEach((data) => {
-       data.forEach((item) => {
-         let currentIndex;
-         let type;
-         if (data === foodData) {
-           htmlContent += createCardHtml(item, foodIndex, 'food');
-           currentIndex = foodIndex;
-           type = 'food';
-           foodIndex++;
-         } else if (data === slushyData) {
-           htmlContent += createCardHtml(item, slushyIndex, 'slushy');
-           currentIndex = slushyIndex;
-           type = 'slushy';
-           slushyIndex++;
-         } else {
-           htmlContent += createCardHtml(item, coffeeIndex, 'coffee');
-           currentIndex = coffeeIndex;
-           type = 'coffee';
-           coffeeIndex++;
-         }
-       });
-     });
+      data.forEach((item) => {
+        let currentIndex;
+        let type;
+        if (data === foodData) {
+          htmlContent += createCardHtml(item, foodIndex, 'food');
+          currentIndex = foodIndex;
+          type = 'food';
+          foodIndex++;
+        } else if (data === slushyData) {
+          htmlContent += createCardHtml(item, slushyIndex, 'slushy');
+          currentIndex = slushyIndex;
+          type = 'slushy';
+          slushyIndex++;
+        } else {
+          htmlContent += createCardHtml(item, coffeeIndex, 'coffee');
+          currentIndex = coffeeIndex;
+          type = 'coffee';
+          coffeeIndex++;
+        }
 
-     cardSection.innerHTML = htmlContent;
+        cardSection.addEventListener("click", (event) => {
+          if (event.target.tagName === "BUTTON") {
+            const [btnType, itemType, currentIndex, sizeIndex] = event.target.id.split("-");
+            const item = JSON.parse(event.target.getAttribute("data-item"));
+            const newSizeIndex = parseInt(event.target.getAttribute("data-size-index"));
+            document.getElementById(`price-${itemType}-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">${item.sizes[newSizeIndex].price}</small>`;
+          }
+        });
+      });
+    });
 
-     cardSection.addEventListener("click", (event) => {
-       if (event.target.tagName === "BUTTON") {
-         const [btnType, itemType, currentIndex, sizeIndex] = event.target.id.split("-");
-         const item = JSON.parse(event.target.getAttribute("data-item"));
-         const newSizeIndex = parseInt(event.target.getAttribute("data-size-index"));
-         document.getElementById(`price-${itemType}-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">${item.sizes[newSizeIndex].price}</small>`;
-       }
-     });
+    cardSection.innerHTML = htmlContent;
 
-     AOS.init();
-   });
+    AOS.init();
+  };
 
-   // Call function to populate card section
-   populateCardSection();
+  // Call function to populate card section
+  populateCardSection();
 
   console.log('5');
 
