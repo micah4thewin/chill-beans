@@ -7,7 +7,8 @@ var typed = new Typed('#element', {
   smartBackspace: true
 });
 */
-document.addEventListener("DOMContentLoaded", async function () {
+const doc = document;
+doc.addEventListener("DOMContentLoaded", async function () {
 
   // Fetch data from JSON files
   const fetchJsonData = async (filename) => {
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const foodData = await fetchJsonData('food.json');
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
-    const cardSection = document.querySelector('#menu-section');
+    const cardSection = doc.querySelector('#menu-section');
     let foodIndex = 0;
     let slushyIndex = 0;
     let coffeeIndex = 0;
@@ -79,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const [btnType, itemType, currentIndex, sizeIndex] = event.target.id.split("-");
             const item = JSON.parse(event.target.getAttribute("data-item"));
             const newSizeIndex = parseInt(event.target.getAttribute("data-size-index"));
-            document.getElementById(`price-${itemType}-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">${item.sizes[newSizeIndex].price}</small>`;
+            doc.getElementById(`price-${itemType}-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">${item.sizes[newSizeIndex].price}</small>`;
           }
         });
       });
@@ -91,6 +92,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('6');
+  console.log('7');
 
 })();
