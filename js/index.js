@@ -10,12 +10,6 @@ var typed = new Typed('#element', {
 const doc = document;
 doc.addEventListener("DOMContentLoaded", async function () {
 
-  // Fetch data from JSON files
-  const fetchJsonData = async (filename) => {
-    const response = await fetch(filename);
-    const data = await response.json();
-    return data;
-  };
 
   // Function to create card HTML
   const createCardHtml = (item, index, type) =>
@@ -75,14 +69,6 @@ doc.addEventListener("DOMContentLoaded", async function () {
           coffeeIndex++;
         }
 
-        cardSection.addEventListener("click", (event) => {
-          if (event.target.tagName === "BUTTON") {
-            const [btnType, itemType, currentIndex, sizeIndex] = event.target.id.split("-");
-            const item = JSON.parse(event.target.getAttribute("data-item"));
-            const newSizeIndex = parseInt(event.target.getAttribute("data-size-index"));
-            doc.getElementById(`price-${itemType}-${currentIndex}`).innerHTML = `<small class="text-muted fs-3">${item.sizes[newSizeIndex].price}</small>`;
-          }
-        });
       });
     });
 
@@ -92,6 +78,6 @@ doc.addEventListener("DOMContentLoaded", async function () {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('7');
+  console.log('8');
 
 })();
