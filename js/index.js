@@ -7,9 +7,15 @@ var typed = new Typed('#element', {
   smartBackspace: true
 });
 */
-const doc = document;
-doc.addEventListener("DOMContentLoaded", async function () {
 
+document.addEventListener("DOMContentLoaded", async function () {
+
+  // Fetch data from JSON files
+  const fetchJsonData = async (filename) => {
+    const response = await fetch(filename);
+    const data = await response.json();
+    return data;
+  };
 
   // Function to create card HTML
   const createCardHtml = (item, index, type) =>
@@ -41,7 +47,7 @@ doc.addEventListener("DOMContentLoaded", async function () {
     const foodData = await fetchJsonData('food.json');
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
-    const cardSection = doc.querySelector('#menu-section');
+    const cardSection = document.querySelector('#menu-section');
     let foodIndex = 0;
     let slushyIndex = 0;
     let coffeeIndex = 0;
@@ -78,6 +84,6 @@ doc.addEventListener("DOMContentLoaded", async function () {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('8');
+  console.log('7');
 
 })();
