@@ -118,6 +118,6 @@ if (typedElement) {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('10');
+  console.log('11');
 
 })();
