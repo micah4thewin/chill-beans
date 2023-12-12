@@ -10,6 +10,21 @@ var typed = new Typed('#element', {
 
 document.addEventListener("DOMContentLoaded", async function () {
 
+  // Initialize Typed.js
+const typedElement = document.querySelector('#typed');
+if (typedElement) {
+  const typed = new Typed('#typed', {
+  stringsElement: '#typed-strings',
+  loop: true,
+  loopCount: Infinity,
+  typeSpeed: 25,
+  backSpeed: 15,
+  showCursor: false,
+  cursorChar: '|',
+  autoInsertCss: true,
+});
+}
+
   // Fetch data from JSON files
   const fetchJsonData = async (filename) => {
     const response = await fetch(filename);
@@ -101,6 +116,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('9');
+  console.log('10');
 
 })();
