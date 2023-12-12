@@ -12,26 +12,23 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Initialize Typed.js
 const typedElement = document.querySelector('#typed');
-if (typedElement) {
-  const typed = new Typed('#typed', {
-  stringsElement: '#typed-strings',
-  loop: true,
-  loopCount: Infinity,
-  typeSpeed: 25,
-  backSpeed: 15,
-  showCursor: false,
-  cursorChar: '|',
-  autoInsertCss: true,
-});
-}
-
-  // Fetch data from JSON files
+  if (typedElement) {
+    const typed = new Typed('#typed', {
+    stringsElement: '#typed-strings',
+    loop: true,
+    loopCount: Infinity,
+    typeSpeed: 25,
+    backSpeed: 15,
+    showCursor: false,
+    cursorChar: '|',
+    autoInsertCss: true,
+  });
+  }
   const fetchJsonData = async (filename) => {
     const response = await fetch(filename);
     const data = await response.json();
     return data;
   };
-
   const updatePrice = (type, index, sizeIndex, item) => {
     const priceElement = document.querySelector(`#price-${type}-${index}`);
     priceElement.textContent = `$${item.sizes[sizeIndex].price}`;
@@ -39,7 +36,6 @@ if (typedElement) {
     priceElement.classList.add('text-muted');
     priceElement.classList.add('fs-3');
   };
-
   const addSizeButtonListeners = (type, index, item) => {
     item.sizes.forEach((_, sizeIndex) => {
       const button = document.querySelector(`#size-btn-${type}-${index}-${sizeIndex}`);
@@ -48,8 +44,6 @@ if (typedElement) {
       });
     });
   };
-
-  // Function to create card HTML
   const createCardHtml = (item, index, type) =>
     `<div class="col-12 col-md-6 col-lg-4 mb-4">
       <div class="card rounded">
@@ -118,6 +112,6 @@ if (typedElement) {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('11');
+  console.log('12');
 
-})();
+});
