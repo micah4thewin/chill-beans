@@ -99,6 +99,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('13');
+  console.log('14');
 
 });
