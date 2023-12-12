@@ -10,6 +10,7 @@ var typed = new Typed('#element', {
 
 document.addEventListener("DOMContentLoaded", async function () {
 
+console.log("Typed is here.", typedElement);
   const fetchJsonData = async (filename) => {
     const response = await fetch(filename);
     const data = await response.json();
@@ -57,10 +58,78 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Populate card section
   const populateCardSection = async () => {
+    /*
     const foodData = await fetchJsonData('food.json');
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
     const cardSection = document.querySelector('#menu-section');
+    */
+
+    const foodData = [
+      {
+        "name": "Bagel",
+        "description": "Freshly baked bagel",
+        "photo": "assets/images/bagel.webp",
+        "sizes": [
+          {
+            "size": "Single",
+            "price": 2.50,
+            "calories": 245
+          }
+        ]
+      },
+    ];
+    const slushyData = [
+      {
+        "name": "Blue Raspberry Slushy",
+        "description": "Refreshing blue raspberry flavored slushy",
+        "photo": "assets/images/blueras.webp",
+        "sizes": [
+          {
+            "size": "12oz",
+            "price": 3.00,
+            "calories": 180
+          },
+          {
+            "size": "16oz",
+            "price": 4.00,
+            "calories": 240
+          },
+          {
+            "size": "24oz",
+            "price": 5.00,
+            "calories": 360
+          }
+        ]
+      },
+    ];
+    const coffeeData = [
+      {
+        "name": "Coffee",
+        "description": "Rich and aromatic coffee",
+        "photo": "assets/images/coffee.webp",
+        "sizes": [
+          {
+            "size": "12oz",
+            "price": 2.50,
+            "calories": 5
+          },
+          {
+            "size": "16oz",
+            "price": 3.00,
+            "calories": 10
+          },
+          {
+            "size": "24oz",
+            "price": 4.00,
+            "calories": 15
+          }
+        ]
+      },
+
+        ];
+    const cardSection = document.querySelector('#menu-section');
+
 
     let htmlContent = '';
 

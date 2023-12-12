@@ -1,26 +1,65 @@
 body {
-  background-color: #281b25;
+    height: 100vh;
+    background: linear-gradient(147deg, #281b25, #351b2f, #5e194e, #351b2f, #351b2f, #5e194e, #281b25, #281b25);
+    background-size: 1600% 1600%;
+    -webkit-animation: AnimationName 44s ease infinite;
+    -moz-animation: AnimationName 44s ease infinite;
+    animation: AnimationName 44s ease infinite;
 }
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:9% 0%}
+    50%{background-position:92% 100%}
+    100%{background-position:9% 0%}
+}
+
 
 .card {
   border: solid;
   border-width: 3px;
   border-color: #281b25;
   background: #efefef;
-  box-shadow:  7px 7px 14px #22171f,
-               -7px -7px 14px #2e1f2b;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2),
+              -3px -3px 5px rgba(0, 0, 0, 0.2);
 }
 
 
 .card:hover {
   border: solid;
   border-width: 3px;
-  border-color: #281b25;
+  border-color: #fff;
   background: #efefef;
-  box-shadow:  7px 7px 14px #22171f,
-               -7px -7px 14px #2e1f2b;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
+              -6px -6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .cyan-text {
     color: #5fa09a;
+}
+
+#directions {
+  margin: 15px;
+  margin-top: 0px;
+  border: solid;
+  border-width: 3px;
+  background: #efefef;
+}
+
+.accent-line {
+    width: 50%;
+    min-width: 100px;
+    max-width: 250px;
+    height: 3px;
+    background-color: #fff;
+    margin: 15px 0;
 }
