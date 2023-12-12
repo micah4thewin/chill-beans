@@ -1,10 +1,11 @@
 body {
     height: 100vh;
-    background: linear-gradient(147deg, #281b25, #351b2f, #5e194e, #351b2f, #351b2f, #5e194e, #281b25, #281b25);
-    background-size: 1600% 1600%;
-    -webkit-animation: AnimationName 44s ease infinite;
-    -moz-animation: AnimationName 44s ease infinite;
-    animation: AnimationName 44s ease infinite;
+    background: linear-gradient(311deg, #281b25, #351b2f, #5e194e, #351b2f, #351b2f, #5e194e, #281b25, #281b25, #5e194e, #281b25, #281b25);
+    background-size: 2200% 2200%;
+
+    -webkit-animation: AnimationName 59s ease infinite;
+    -moz-animation: AnimationName 59s ease infinite;
+    animation: AnimationName 59s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
