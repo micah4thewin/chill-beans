@@ -35,7 +35,9 @@ if (typedElement) {
   const updatePrice = (type, index, sizeIndex, item) => {
     const priceElement = document.querySelector(`#price-${type}-${index}`);
     priceElement.textContent = `$${item.sizes[sizeIndex].price}`;
-    priceElement.classList.add('text-muted fs-3');
+    priceElement.classList.add('card-text');
+    priceElement.classList.add('text-muted');
+    priceElement.classList.add('fs-3');
   };
 
   const addSizeButtonListeners = (type, index, item) => {
@@ -66,7 +68,7 @@ if (typedElement) {
                 )
                 .join("")}
             </div>
-            <p id="price-${type}-${index}" class="card-text"><small class="text-muted fs-3">${item.sizes[0].price}</small></p>
+            <p id="price-${type}-${index}" class="card-text"><small class="text-muted fs-3">$${item.sizes[0].price}</small></p>
           </div>
         </div>
       </div>
