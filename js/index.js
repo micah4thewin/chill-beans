@@ -17,6 +17,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     return data;
   };
 
+  const updatePrice = (type, index, sizeIndex, item) => {
+    const priceElement = document.querySelector(`#price-${type}-${index}`);
+    priceElement.textContent = item.sizes[sizeIndex].price;
+  };
+
+  const addSizeButtonListeners = (type, index, item) => {
+    item.sizes.forEach((_, sizeIndex) => {
+      const button = document.querySelector(`#size-btn-${type}-${index}-${sizeIndex}`);
+      button.addEventListener('click', () => {
+        updatePrice(type, index, sizeIndex, item);
+      });
+    });
+  };
+
   // Function to create card HTML
   const createCardHtml = (item, index, type) =>
     `<div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -48,42 +62,44 @@ document.addEventListener("DOMContentLoaded", async function () {
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
     const cardSection = document.querySelector('#menu-section');
-    let foodIndex = 0;
-    let slushyIndex = 0;
-    let coffeeIndex = 0;
 
     let htmlContent = '';
 
-    [foodData, slushyData, coffeeData].forEach((data) => {
-      data.forEach((item) => {
-        let currentIndex;
+    [foodData, slushyData, coffeeData].forEach((data, dataIndex) => {
+      data.forEach((item, index) => {
         let type;
-        if (data === foodData) {
-          htmlContent += createCardHtml(item, foodIndex, 'food');
-          currentIndex = foodIndex;
+        if (dataIndex === 0) {
           type = 'food';
-          foodIndex++;
-        } else if (data === slushyData) {
-          htmlContent += createCardHtml(item, slushyIndex, 'slushy');
-          currentIndex = slushyIndex;
+        } else if (dataIndex === 1) {
           type = 'slushy';
-          slushyIndex++;
         } else {
-          htmlContent += createCardHtml(item, coffeeIndex, 'coffee');
-          currentIndex = coffeeIndex;
           type = 'coffee';
-          coffeeIndex++;
         }
-
+        htmlContent += createCardHtml(item, index, type);
       });
     });
 
     cardSection.innerHTML = htmlContent;
+
+    [foodData, slushyData, coffeeData].forEach((data, dataIndex) => {
+      data.forEach((item, index) => {
+        let type;
+        if (dataIndex === 0) {
+          type = 'food';
+        } else if (dataIndex === 1) {
+          type = 'slushy';
+        } else {
+          type = 'coffee';
+        }
+        addSizeButtonListeners(type, index, item);
+      });
+    });
   };
+
 
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('7');
+  console.log('8');
 
 })();
