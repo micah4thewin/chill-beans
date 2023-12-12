@@ -63,3 +63,7 @@ animation: AnimationName 59s ease infinite;
     background-color: #fff;
     margin: 15px 0;
 }
+
+#box{
+  min-height: 50px;
+}

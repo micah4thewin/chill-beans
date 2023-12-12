@@ -49,6 +49,6 @@ p, a {
 
 .typed {
     font-family: 'Lato', sans-serif;
-    min-height: 100px;
+    min-height: 25px;
     max-width: 1000px;
 }
