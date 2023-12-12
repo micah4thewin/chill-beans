@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const updatePrice = (type, index, sizeIndex, item) => {
     const priceElement = document.querySelector(`#price-${type}-${index}`);
-    priceElement.textContent = item.sizes[sizeIndex].price;
+    priceElement.textContent = `$${item.sizes[sizeIndex].price}`;
+    priceElement.classList.add('text-muted fs-3');
   };
 
   const addSizeButtonListeners = (type, index, item) => {
@@ -100,6 +101,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Call function to populate card section
   await populateCardSection();
   AOS.init();
-  console.log('8');
+  console.log('9');
 
 })();
