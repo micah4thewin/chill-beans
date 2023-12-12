@@ -53,7 +53,20 @@
     <script>
 
     AOS.init();
-
+    // Initialize Typed.js
+  const typedElement = document.querySelector('#typed');
+    if (typedElement) {
+      const typed = new Typed('#typed', {
+      stringsElement: '#typed-strings',
+      loop: true,
+      loopCount: Infinity,
+      typeSpeed: 25,
+      backSpeed: 15,
+      showCursor: false,
+      cursorChar: '|',
+      autoInsertCss: true,
+    });
+  }
 
 </script>
   </body>
