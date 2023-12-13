@@ -1,5 +1,5 @@
 body {
-    height: 100vh;
+    height: 100%;
 background: linear-gradient(142deg, #281b25, #351b2f, #351b2f, #351b2f, #5e194e, #5e194e, #5e194e, #281b25, #281b25, #281b25, #5e194e, #5e194e, #281b25, #281b25, #281b25);
 background-size: 3000% 3000%;
 
@@ -66,4 +66,64 @@ animation: AnimationName 59s ease infinite;
 
 #box{
   min-height: 50px;
+}
+
+header {
+  position: relative;
+  height: 6px;
+  max-height: 900px;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+  background-image: url("../media/fallback.jpg");
+  background-position: left;
+  background-color: #1f271b;
+  border: none;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  object-fit: cover;
+  object-position: right center;
+}
+
+
+#test {
+  position: relative;
+  z-index: 2;
+  width: auto;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.0;
+  z-index: 1;
+}
+
+/* Media Query for devices with coarse pointers and no hover functionality */
+/* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('../assets/images/background.jpg') black no-repeat center center scroll;
+  }
+
+  header video {
+    display: none;
+  }
 }

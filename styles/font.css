@@ -41,6 +41,7 @@
 h1, h2, h3, h4, h5 {
     font-family: 'Pacifico', sans-serif;
     color: #ffffff;
+    /*-webkit-text-stroke: 1px #000;*/
 }
 
 p, a {
