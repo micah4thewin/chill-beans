@@ -58,13 +58,13 @@ console.log("Typed is here.", typedElement);
 
   // Populate card section
   const populateCardSection = async () => {
-    /*
+    
     const foodData = await fetchJsonData('food.json');
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
     const cardSection = document.querySelector('#menu-section');
-    */
 
+  /*
     const foodData = [
       {
         "name": "Bagel",
@@ -128,6 +128,8 @@ console.log("Typed is here.", typedElement);
       },
 
         ];
+
+          */
     const cardSection = document.querySelector('#menu-section');
 
 
