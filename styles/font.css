@@ -48,8 +48,20 @@ p, a {
     font-family: 'Lato', sans-serif;
 }
 
-.typed {
+#typed {
     font-family: 'Lato', sans-serif;
-    min-height: 25px;
     max-width: 1000px;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.cyan-text {
+    color: #5fa09a;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.white-text {
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }

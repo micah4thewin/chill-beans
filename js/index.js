@@ -9,13 +9,14 @@ var typed = new Typed('#element', {
 */
 
 document.addEventListener("DOMContentLoaded", async function () {
-
+/*
 console.log("Typed is here.", typedElement);
   const fetchJsonData = async (filename) => {
     const response = await fetch(filename);
     const data = await response.json();
     return data;
   };
+  */
   const updatePrice = (type, index, sizeIndex, item) => {
     const priceElement = document.querySelector(`#price-${type}-${index}`);
     priceElement.textContent = `$${item.sizes[sizeIndex].price}`;
@@ -58,13 +59,13 @@ console.log("Typed is here.", typedElement);
 
   // Populate card section
   const populateCardSection = async () => {
-
+/*
     const foodData = await fetchJsonData('food.json');
     const slushyData = await fetchJsonData('slushy.json');
     const coffeeData = await fetchJsonData('coffee.json');
+    */
     const cardSection = document.querySelector('#menu-section');
 
-  /*
     const foodData = [
       {
         "name": "Bagel",
@@ -129,7 +130,7 @@ console.log("Typed is here.", typedElement);
 
         ];
 
-          */
+
 
 
     let htmlContent = '';

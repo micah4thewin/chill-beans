@@ -43,9 +43,6 @@ animation: AnimationName 59s ease infinite;
               -6px -6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.cyan-text {
-    color: #5fa09a;
-}
 
 #directions {
   margin: 15px;
@@ -126,4 +123,18 @@ header .overlay {
   header video {
     display: none;
   }
+}
+
+#banner {
+  height: 200px;
+  border-top: solid 2px #5fa09a;
+  border-bottom: solid 2px #5fa09a;
+}
+
+#contact {
+  border: solid 2px #5fa09a;
+}
+
+#footer {
+  border-top: solid 2px #5fa09a;
 }
